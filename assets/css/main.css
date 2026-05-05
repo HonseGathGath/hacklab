@@ -92,8 +92,63 @@ a { color: var(--primary); text-decoration: none; }
 .sandbox__frame { width: 100%; height: 420px; border: none; }
 .sandbox__toggle { margin-top: 16px; }
 
-.certificate { display: flex; align-items: center; justify-content: center; min-height: 80vh; }
-.certificate__card { background: var(--surface); padding: 40px; border-radius: 12px; text-align: center; }
+.certificate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    padding: 24px;
+}
+.certificate__card {
+    background: linear-gradient(160deg, rgba(18, 18, 26, 0.95) 0%, rgba(10, 10, 15, 0.95) 100%);
+    padding: 40px;
+    border-radius: 14px;
+    text-align: center;
+    border: 1px solid rgba(0, 207, 255, 0.2);
+    box-shadow: 0 24px 40px rgba(0, 0, 0, 0.35);
+    max-width: 680px;
+    width: 100%;
+}
+.certificate__card h1,
+.certificate__card h2 {
+    margin-top: 0;
+}
+.certificate__card--locked {
+    text-align: left;
+}
+.certificate__status {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 14px;
+    color: var(--accent);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+.certificate__progress {
+    margin-top: 16px;
+    margin-bottom: 12px;
+    height: 10px;
+    background: #1b1b2a;
+    border-radius: 999px;
+    overflow: hidden;
+}
+.certificate__progress-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-radius: 999px;
+}
+.certificate__actions {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+.certificate__card--locked .certificate__actions {
+    justify-content: flex-start;
+}
 
 .admin { padding: 40px 80px; }
 .table { width: 100%; border-collapse: collapse; }
@@ -103,4 +158,7 @@ a { color: var(--primary); text-decoration: none; }
 @media (max-width: 768px) {
     .hero, .container, .module-header, .lesson, .dashboard-header, .quiz, .sandbox, .admin { padding: 24px; }
     .hero__cta { flex-direction: column; }
+    .certificate__card { padding: 28px; }
+    .certificate__actions { flex-direction: column; }
+    .certificate__actions .button { width: 100%; text-align: center; }
 }

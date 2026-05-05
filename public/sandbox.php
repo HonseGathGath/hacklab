@@ -31,11 +31,16 @@ try {
     error_log('Sandbox progress update failed: ' . $exception->getMessage());
 }
 
-$sandboxPath = '../sandbox/' . $module . '_demo.php';
-$iframeSrc = $sandboxPath;
-if (!empty($_GET['mode'])) {
-    $iframeSrc .= '?mode=' . urlencode($_GET['mode']);
+$mode = $_GET['mode'] ?? '';
+if ($mode !== 'vulnerable' && $mode !== 'fixed') {
+    $mode = '';
 }
+
+$iframeQuery = ['module' => $module];
+if ($mode !== '') {
+    $iframeQuery['mode'] = $mode;
+}
+$iframeSrc = 'sandbox_demo.php?' . http_build_query($iframeQuery);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -54,7 +59,7 @@ if (!empty($_GET['mode'])) {
     <main class="sandbox">
         <p class="muted">These demos run in isolation. They never touch the main HackLab database.</p>
         <div class="sandbox__panel">
-            <iframe class="sandbox__frame" src="<?= e($iframeSrc) ?>"></iframe>
+            <iframe class="sandbox__frame" src="<?= e($iframeSrc) ?>" title="<?= e(strtoupper($module)) ?> sandbox"></iframe>
         </div>
         <div class="sandbox__toggle">
             <button class="button" id="toggle-mode" data-mode="vulnerable">Toggle vulnerable/fixed</button>

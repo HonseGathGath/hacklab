@@ -28,6 +28,8 @@ $mode = $_GET['mode'] ?? 'vulnerable';
 <body>
     <h3>IDOR Sandbox</h3>
     <form method="get">
+        <input type="hidden" name="module" value="<?= htmlspecialchars((string) ($_GET['module'] ?? ''), ENT_QUOTES) ?>">
+        <input type="hidden" name="mode" value="<?= htmlspecialchars((string) $mode, ENT_QUOTES) ?>">
         <label>File ID <input type="number" name="file_id" value="<?= htmlspecialchars((string) $fileId, ENT_QUOTES) ?>" min="1" max="5"></label>
         <button type="submit">Load</button>
     </form>
