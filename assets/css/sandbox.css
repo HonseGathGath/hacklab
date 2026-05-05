@@ -1,0 +1,10 @@
+.sandbox__panel {
+    background: #0c0c14;
+}
+
+.sandbox__explain {
+    margin-top: 24px;
+    background: #12121a;
+    padding: 16px;
+    border-radius: 10px;
+}

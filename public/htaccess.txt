@@ -1,0 +1,14 @@
+# If using Apache, move this file to /srv/http/hacklab/.htaccess
+# and ensure mod_rewrite is enabled. The DocumentRoot should be
+# /srv/http/hacklab/public.
+
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /hacklab/
+    RewriteRule ^$ public/index.php [L]
+</IfModule>
+
+RewriteRule ^includes/ - [F,L]
+RewriteRule ^sandbox/ - [F,L]
